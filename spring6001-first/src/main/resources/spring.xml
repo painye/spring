@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="userDaoBean" class="com.painye.spring6.dao.UserDao"/>
+
+    <!--set注入-->
+    <bean id="userServiceBean" class="com.painye.spring6.service.UserService">
+        <!--name是成员对象的名字, 会反射调用set+Name的方法-->
+        <property name="userDao" ref="userDaoBean"/>
+    </bean>
+
+    <bean id="orderDaoBean" class="com.painye.spring6.dao.OrderDao"/>
+
+    <!--构造注入-->
+    <bean id="orderServiceBean" class="com.painye.spring6.service.OrderService">
+<!--        <constructor-arg index="0" ref="orderDaoBean"/>-->
+<!--        <constructor-arg name="orderDao" ref="orderDaoBean"/>-->
+        <constructor-arg ref="orderDaoBean"/>
+    </bean>
+
+    <!--内部bean-->
+    <bean id="userServiceInner" class="com.painye.spring6.service.UserService">
+        <property name="userDao">
+            <bean id="userDanInner" class="com.painye.spring6.dao.UserDao"/>
+        </property>
+    </bean>
+
+    <!--简单属性赋值-->
+    <bean id="studentBean" class="com.painye.spring6.bean.Student">
+        <!--对象注入用ref, 简单类型的注入用value-->
+        <property name="age" value="12">
+<!--            <value>12</value>-->
+        </property>
+    </bean>
+
+
+</beans>

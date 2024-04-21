@@ -1,4 +1,4 @@
-package com.painye.bean;
+package com.painye.spring6.bean;
 /**
  * @author pan
  * @date 2024/4/19 8:37
