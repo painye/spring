@@ -4,6 +4,8 @@ package com.painye;
  * @date 2024/4/19 8:38
  */
 
+import com.painye.spring6.bean.MyDataSource;
+import com.painye.spring6.bean.MyTime;
 import com.painye.spring6.bean.Student;
 import com.painye.spring6.bean.User;
 import com.painye.spring6.service.OrderService;
@@ -54,5 +56,33 @@ public class Spring6Test {
         Student studentBean = context.getBean("studentBean", Student.class);
         System.out.println(studentBean
         );
+    }
+
+    @Test
+    public void testP(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("p.xml");
+        UserService userService = context.getBean("userServiceBean", UserService.class);
+        userService.save();
+    }
+
+    @Test
+    public void testC(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("p.xml");
+        MyTime myTimeBean = context.getBean("myTimeBean", MyTime.class);
+        System.out.println(myTimeBean);
+    }
+
+    @Test
+    public void testAutoWire(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("autowire.xml");
+        UserService userServiceBean = context.getBean("userServiceBean", UserService.class);
+        userServiceBean.save();
+    }
+
+    @Test
+    public void testProperties(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("useJdbc.xml");
+        MyDataSource myDataSource = context.getBean("datasourceBean", MyDataSource.class);
+        System.out.println(myDataSource);
     }
 }
