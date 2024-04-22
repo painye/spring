@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--默认单例模式 scope = singleton-->
+<!--    <bean id="springBean1" class="com.painye.spring.beans.SpringBean"/>-->
+
+    <!--原型模式-->
+    <bean id="springBean2" class="com.painye.spring.beans.SpringBean" scope="prototype"/>
+
+    <!--自定义线程级别的scope，在同一个线程中获得的bean都是同一个，跨线程则是不同的对象。-->
+    <bean class="org.springframework.beans.factory.config.CustomScopeConfigurer">
+        <property name="scopes">
+            <map>
+                <entry key="myThread">
+                    <bean class="org.springframework.context.support.SimpleThreadScope"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="threadBean" class="com.painye.spring.beans.SpringBean" scope="myThread"/>
+
+
+
+
+</beans>
