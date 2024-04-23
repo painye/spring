@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--1、构造方法实例化-->
+    <!--2、简单工厂模式实例化-->
+    <bean id="vip" class="com.painye.spring.bean.VipFactory" factory-method="newInstance"/>
+
+    <!--3、factory-bean实例化-->
+    <bean id="orderFactory" class="com.painye.spring.bean.OrderFactory"/>
+    <bean id="order" factory-bean="orderFactory" factory-method="newInstance"/>
+    <bean id="person" class="com.painye.spring.bean.PersonBeanFactory"/>
+
+
+</beans>
