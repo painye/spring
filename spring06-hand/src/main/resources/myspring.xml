@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+    <bean id="userBean" class="com.painye.spring.bean.User">
+        <property name="name" value="tom"/>
+        <property name="age" value="12"/>
+        <property name="addr" ref="addrBean"/>
+    </bean>
+
+    <bean id="addrBean" class="com.painye.spring.bean.Address">
+        <property name="city" value="汉中"/>
+        <property name="street" value="老君镇"/>
+        <property name="zipcode" value="123"/>
+    </bean>
+</beans>
