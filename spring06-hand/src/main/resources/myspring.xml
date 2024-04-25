@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans>
-    <bean id="userBean" class="com.painye.spring.bean.User">
+    <bean id="userBean" class="com.painye.spring.bean.Student">
         <property name="name" value="tom"/>
         <property name="age" value="12"/>
         <property name="addr" ref="addrBean"/>
